@@ -1,0 +1,29 @@
+@import "../../App.scss";
+
+.products_nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  background-color: $so-white;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0 auto;
+  a {
+    color: $so-green;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease-in-out;
+
+    &:last-child {
+      margin-left: 0rem;
+    }
+    &::after {
+      display: none;
+    }
+    &:hover {
+      color: $so-gray-900;
+    }
+  }
+}
