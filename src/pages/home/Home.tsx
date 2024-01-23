@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../components/navBar/Navbar";
 import ProductsNavBar from "../../components/productsNavBar/ProductsNavBar";
 
 const Home = () => {
