@@ -1,5 +1,48 @@
 @import "../../App.scss";
 
+footer {
+  background-color: $so-green;
+  color: $so-gray-100;
+  margin-top: 10rem;
+}
+
+.links_footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: fit-content;
+  list-style: none;
+  gap: 4rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+  div {
+    p {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+      margin-block-start: 1rem;
+      margin-block-end: 1rem;
+      padding-inline-start: 40px;
+      font-weight: 500;
+
+      li {
+        line-height: 2;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+  
+}
+
 .direitos {
   display: flex;
   justify-content: space-between;
@@ -12,7 +55,6 @@
   &::before {
     content: "";
     position: absolute;
-
     width: 95%;
     height: 1px;
     background-color: #929fa8;

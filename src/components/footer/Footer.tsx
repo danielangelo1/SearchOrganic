@@ -6,13 +6,49 @@ import { FacebookLogo } from "@phosphor-icons/react/dist/ssr";
 const Footer = () => {
   return (
     <>
-      <div className={style.direitos}></div>
-      <p>Search Organic © 2024</p>
-      <div className={style.redes_sociais}>
-        <FacebookLogo size={"2rem"} />
-        <InstagramLogo size={"2rem"} />
-        <TwitterLogo size={"2rem"} />
-      </div>
+      <footer>
+        <nav className={style.links_footer}>
+
+          <div>
+            <p>Categorias</p>
+            <ul>
+              <li>Arroz e Feijão</li>
+              <li>Frutas</li>
+              <li>Leites</li>
+              <li>Legumes</li>
+              <li>Ovos</li>
+              <li>Verduras e Temperos</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Empresa</p>
+            <ul>
+              <li>Sobre nós</li>
+              <li>Contato</li>
+              <li>Trabalhe conosco</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Atendimento</p>
+            <ul>
+              <li>Perguntas frequentes</li>
+              <li>Política de privacidade</li>
+              <li>Política de troca e devolução</li>
+            </ul>
+          </div>
+        </nav>
+        <div className={style.direitos}>
+        <p>Search Organic © 2024</p>
+        <div className={style.redes_sociais}>
+          
+          <FacebookLogo size={"2rem"} />
+          <InstagramLogo size={"2rem"} />
+          <TwitterLogo size={"2rem"} />
+        </div>
+        </div>
+      </footer>
     </>
   );
 };
