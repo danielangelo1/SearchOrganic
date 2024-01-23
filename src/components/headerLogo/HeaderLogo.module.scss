@@ -1,7 +1,11 @@
+@import "../../App.scss";
+
 .logo {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: $so-gray-100;
+  text-decoration: none;
 
   span {
     font-family: "Newsreader", serif;
