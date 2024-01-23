@@ -1,13 +1,7 @@
 import React from "react";
-import Footer from "../../components/footer/Footer";
 
 const Home = () => {
-  return (
-    <>
-      <h1>Home</h1>
-      <Footer />
-    </>
-  );
+  return <ProductsNavBar />;
 };
 
 export default Home;
