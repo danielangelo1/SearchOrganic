@@ -1,0 +1,27 @@
+$so-green: rgba(40, 93, 86, 1);
+$so-text: black;
+$so-white: #fff;
+$so-transition: all 0.2s ease-in-out;
+$so-bg: #f8f6f4;
+$so-secondary: #274c5b;
+$so-accent: #007766;
+$so-promotional-price: rgb(209, 189, 171);
+$so-gray-50: rgba(248, 246, 244, 1);
+$so-gray-100: rgba(242, 238, 234, 1);
+$so-gray-200: rgba(235, 229, 223, 1);
+$so-gray-700: rgba(132, 114, 98, 1);
+$so-gray-800: rgba(100, 86, 79, 1);
+$so-gray-900: rgba(73, 58, 49, 1);
+$so-valid: #e7f5e6;
+$so-invalid: #fad9d9;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: $so-bg;
+}

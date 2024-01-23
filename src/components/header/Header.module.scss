@@ -1,0 +1,15 @@
+@import "../../App.scss";
+
+.header_container {
+  background-color: $so-green;
+}
+
+header {
+  color: $so-gray-100;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 22px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

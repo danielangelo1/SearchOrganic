@@ -1,0 +1,12 @@
+@import "../../App.scss";
+
+nav {
+  display: flex;
+  gap: 3rem;
+
+  a {
+    &:last-child {
+      margin-left: 4rem;
+    }
+  }
+}
