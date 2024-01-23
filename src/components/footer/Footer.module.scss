@@ -33,8 +33,9 @@ footer {
       li {
         line-height: 2;
         cursor: pointer;
+        transition: color 0.3s;
         &:hover {
-          text-decoration: underline;
+          color: black;
         }
       }
 
@@ -66,9 +67,13 @@ footer {
   display: flex;
   align-items: center;
   margin-top: 1rem;
+  gap: 1rem;
 
-  i {
-    margin-left: 1rem;
-    color: $so-white;
+  a {
+    color: inherit;
+    transition: color 0.3s;
+    &:hover {
+      color: black;
+    }
   }
 }
