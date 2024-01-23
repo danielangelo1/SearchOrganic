@@ -1,12 +1,12 @@
 import { Leaf } from "@phosphor-icons/react";
 import React from "react";
-import "./HeaderLogo.module.scss";
+import style from "./HeaderLogo.module.scss";
 
 const HeaderLogo = () => {
   return (
-    <div className='logo'>
-        <Leaf size={32} />
-        <span>Search Organic</span>
+    <div className={style.logo}>
+      <Leaf size={"2rem"} />
+      <span>Search Organic</span>
     </div>
   );
 };

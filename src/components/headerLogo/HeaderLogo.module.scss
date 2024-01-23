@@ -1,5 +1,10 @@
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  span {
+    font-family: "Newsreader", serif;
+    font-size: 2rem;
+  }
 }
