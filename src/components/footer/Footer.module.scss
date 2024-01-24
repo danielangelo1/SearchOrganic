@@ -39,10 +39,8 @@ footer {
           color: black;
         }
       }
-
     }
   }
-  
 }
 
 .direitos {
@@ -75,6 +73,32 @@ footer {
     transition: color 0.3s;
     &:hover {
       color: black;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 2rem;
+  }
+
+  .links_footer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+    div {
+      ul {
+        padding-inline-start: 0;
+      }
+    }
+  }
+
+  .direitos {
+    flex-direction: column;
+    align-items: center;
+    &::before {
+      width: 100%;
     }
   }
 }

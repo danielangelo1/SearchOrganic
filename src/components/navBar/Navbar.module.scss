@@ -10,3 +10,13 @@ nav {
     }
   }
 }
+
+@media (max-width: 768px) {
+  nav {
+    a {
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
