@@ -8,6 +8,7 @@ import Store from "./pages/store/Store";
 import News from "./pages/news/News";
 import About from "./pages/about/About";
 import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 const App = () => {
   return (
@@ -20,10 +21,10 @@ const App = () => {
           <Route path="/news" element={<News />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-      
     </>
   );
 };
