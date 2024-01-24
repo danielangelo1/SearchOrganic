@@ -1,0 +1,122 @@
+@import "../../App.scss";
+
+.section_vegetable_garden {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    p {
+        font-family: "Newsreader", serif;
+        font-weight: 400;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.card_product_container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.section_propaganda {
+  max-height: 500px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 5rem;
+  background-color: $so-green;
+  color: $so-white;
+}
+
+.propaganda_img_container {
+  width: 70%;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 100%;
+    min-width: 500px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.propaganda_text {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  p:first-child {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  p:nth-child(2) {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  button {
+    all: unset;
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: $so-white;
+    color: $so-green;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $so-gray-100;
+    }
+  }
+}
+
+.section_testimonials {
+  text-align: center;
+
+  p {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.card_testimonials_container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .section_propaganda {
+    flex-direction: column;
+    flex-flow: column-reverse;
+
+    .propaganda_img_container {
+      width: 100%;
+      img {
+        max-height: 150px;
+      }
+    }
+    .propaganda_text {
+      padding: 1rem;
+      p:first-child {
+        font-size: 1.5rem;
+      }
+      p:nth-child(2) {
+        font-size: 1rem;
+      }
+    }
+  }
+  .section_testimonials {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .card_testimonials_container {
+    gap: 1rem;
+  }
+}
