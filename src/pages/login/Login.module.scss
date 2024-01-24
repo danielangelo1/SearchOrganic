@@ -1,0 +1,156 @@
+@import "../../App.scss";
+
+main {
+    margin-top: 3rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 50%;
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.formLabelInput {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+        font-weight: 600;
+    }
+
+    input {
+        border: 2px solid $so-gray-200;
+        padding: 8px 12px;
+        border-radius: 4px;
+
+        &:focus {
+            border-color: $so-green;
+            color: #212529;
+            box-shadow: 0 0 0 0.25rem rgba(40, 93, 86, 0.25);
+            outline: none;
+
+            &:invalid {
+              background-color: #fad9d9;
+            }
+            &:valid {
+              background-color: #e7f5e6;
+            }
+          }
+    }
+}
+
+.formLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+    button {
+        all: unset;
+        background-color: $so-green;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        padding: 8px 20px;
+        color: $so-white;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: #224f49;
+        }
+    }
+
+    span {
+        font-size: 0.85rem;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.sectionRegister {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    a {
+        text-decoration: none;
+        color: $so-green;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        font-weight: 500;
+    }
+
+    p:first-child {
+        margin-bottom: 1rem;
+    }
+    p:nth-child(2) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.horizontalLine {
+    margin-block: 24px;
+    height: 1px;
+    width: 100%;
+    max-width: 1440px;
+    min-width: 300px;
+    background-color: $so-green;
+}
+
+.socialMediaContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.btnGoogle, .btnFacebook {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnFacebook {
+    background-color: #3b5998;
+    
+    &:hover {
+        background-color: #293d69;
+    }
+}
+
+.btnGoogle {
+    background-color: #dc3545;
+    border-color: #dc3545;
+
+    &:hover {
+        background-color: #a12733;
+    }
+    
+}
