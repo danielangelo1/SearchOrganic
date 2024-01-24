@@ -1,23 +1,20 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Pagination } from "swiper"; // Corrected import
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
 import style from "./Carousel.module.scss";
 
-// interface CarouselProps {
-//   settings: SwiperProps;
-//   children: ReactNode;
-// }
-
 const Carousel = () => {
   return (
     <Swiper
-      //   modules={[Navigation, Pagination]}
-      //   navigation={true}
-      //   pagination={{ clickable: true }}
+      modules={[Navigation, Pagination, Autoplay]}
+      autoplay={{ delay: 3000 }}
+      loop={true}
+      navigation={true}
+      pagination={{ clickable: true }}
       className={style.swiper_container}
     >
       <SwiperSlide className={style.slide_item}>
