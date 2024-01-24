@@ -1,0 +1,16 @@
+.section_testimonials {
+    text-align: center;
+
+    p {
+        font-family: "Newsreader", serif;
+        font-weight: 400;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.card_testimonials_container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}

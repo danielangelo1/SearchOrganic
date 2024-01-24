@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Store from "./pages/store/Store";
 import News from "./pages/news/News";
@@ -20,7 +21,9 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
+      
     </>
   );
 };
