@@ -9,7 +9,6 @@ const Footer = () => {
     <>
       <footer>
         <nav className={style.links_footer}>
-
           <div>
             <p>Categorias</p>
             <ul>
@@ -41,12 +40,18 @@ const Footer = () => {
           </div>
         </nav>
         <div className={style.direitos}>
-        <p>Search Organic © 2024</p>
-        <div className={style.redes_sociais}>   
-          <Link to="/"><FacebookLogo size={"2rem"} /></Link>
-          <Link to="/"><InstagramLogo size={"2rem"} /></Link>
-          <Link to="/"><TwitterLogo size={"2rem"} /></Link>
-        </div>
+          <p>Search Organic © 2024</p>
+          <div className={style.redes_sociais}>
+            <Link to="/">
+              <FacebookLogo size={"2rem"} alt="Logo do Facebook" />
+            </Link>
+            <Link to="/">
+              <InstagramLogo size={"2rem"} alt="Logo do Instagram" />
+            </Link>
+            <Link to="/">
+              <TwitterLogo size={"2rem"} alt="Logo do Twitter" />
+            </Link>
+          </div>
         </div>
       </footer>
     </>
