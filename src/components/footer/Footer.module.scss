@@ -34,6 +34,7 @@ footer {
         line-height: 2;
         cursor: pointer;
         transition: color 0.3s;
+        width: fit-content;
         &:hover {
           color: black;
         }
