@@ -5,6 +5,7 @@ import CardTestimony from "../../components/cardTestimony/CardTestimony";
 import imageTestimony1 from "../../assets/depoimento-1-300.jpg";
 import imageTestimony2 from "../../assets/depoimento-2-300.jpg";
 import imageTestimony3 from "../../assets/depoimento-3-300.jpg";
+import imagePropaganda from "../../assets/propaganda-imagem-400.webp";
 import Carousel from "../../components/carousel/Carousel";
 
 const Home = () => {
@@ -12,6 +13,24 @@ const Home = () => {
     <>
       <ProductsNavBar />
       <Carousel />
+      <section className={style.section_propaganda}>
+        <div className={style.propaganda_text}>
+          <p>Produtos Orgânicos</p>
+          <p>
+            A SearchOrganic facilita a vida dos clientes e empresas, permitindo
+            a venda de produtos do campo diretamente aos consumidores, com um
+            preço mais acessível!
+          </p>
+          <button>Saiba mais!</button>
+        </div>
+        <div className={style.propaganda_img_container}>
+          <img
+            src={imagePropaganda}
+            alt="Foto mostrando uma variedade de produtos orgânicos"
+          />
+        </div>
+      </section>
+
       <section className={style.section_testimonials}>
         <p>Depoimentos</p>
         <div className={style.card_testimonials_container}>
