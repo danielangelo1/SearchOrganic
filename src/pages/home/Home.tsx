@@ -7,12 +7,14 @@ import imageTestimony2 from "../../assets/depoimento-2-300.jpg";
 import imageTestimony3 from "../../assets/depoimento-3-300.jpg";
 import imagePropaganda from "../../assets/propaganda-imagem-400.webp";
 import Carousel from "../../components/carousel/Carousel";
+import OurMission from "../../components/ourMission/OurMission";
 
 const Home = () => {
   return (
     <>
       <ProductsNavBar />
       <Carousel />
+      <OurMission />
       <section className={style.section_propaganda}>
         <div className={style.propaganda_text}>
           <p>Produtos Orgânicos</p>
