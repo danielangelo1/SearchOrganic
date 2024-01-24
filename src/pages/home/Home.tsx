@@ -13,24 +13,40 @@ import imagemProduct2 from "../../assets/tomate-italiano-product.webp";
 import imagemProduct3 from "../../assets/mamao-papaya-product.webp";
 import imagemProduct4 from "../../assets/tomate-perinha-product.webp";
 import imagemProduct5 from "../../assets/cenoura-product.webp";
+import OurMission from "../../components/ourMission/OurMission";
 
 const Home = () => {
   return (
     <>
       <ProductsNavBar />
       <Carousel />
-
+      <OurMission />
       <section className={style.section_vegetable_garden}>
         <p>Nossa horta</p>
 
         <div className={style.card_product_container}>
-          <CardProduct imgsrc={imagemProduct1}  name="Alface Americana" price="R$ 7,40"/>
-          <CardProduct imgsrc={imagemProduct2}  name="Tomate Italiano" price="R$ 7,40"/>
-          <CardProduct imgsrc={imagemProduct3}  name="Mamão Papaya" price="R$ 7,40"/>
-          <CardProduct imgsrc={imagemProduct4}  name="Tomate Perinha" price="R$ 7,40"/>
-          <CardProduct imgsrc={imagemProduct5}  name="Cenoura" price="R$ 7,40"/>
+          <CardProduct
+            imgsrc={imagemProduct1}
+            name="Alface Americana"
+            price="R$ 7,40"
+          />
+          <CardProduct
+            imgsrc={imagemProduct2}
+            name="Tomate Italiano"
+            price="R$ 7,40"
+          />
+          <CardProduct
+            imgsrc={imagemProduct3}
+            name="Mamão Papaya"
+            price="R$ 7,40"
+          />
+          <CardProduct
+            imgsrc={imagemProduct4}
+            name="Tomate Perinha"
+            price="R$ 7,40"
+          />
+          <CardProduct imgsrc={imagemProduct5} name="Cenoura" price="R$ 7,40" />
         </div>
-
       </section>
 
       <section className={style.section_propaganda}>
