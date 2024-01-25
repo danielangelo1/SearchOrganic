@@ -14,8 +14,8 @@ const CardProduct = ({ imgsrc, name, price }: CardProductProps) => {
     <>
       <div className={style.card_product}>
         <div>
-          <img src={imgsrc} alt={`Imagem do produto ${name}`} />
-          <img src={imgOrganic} alt="Produto orgânico" />
+          <img src={imgsrc} alt={`Imagem do produto ${name}`} loading="lazy" />
+          <img src={imgOrganic} alt="Produto orgânico" loading="lazy" />
           <div className={style.favorite_button}>
             <Heart size={'1.5rem'} weight="bold" />
           </div>

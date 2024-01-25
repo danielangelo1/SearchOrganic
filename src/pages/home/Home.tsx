@@ -63,6 +63,7 @@ const Home = () => {
           <img
             src={imagePropaganda}
             alt="Foto mostrando uma variedade de produtos orgânicos"
+            loading="lazy"
           />
         </div>
       </section>
