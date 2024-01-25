@@ -17,6 +17,36 @@
       "cpf": "213.321321.3123.213",
       "email": "deadea@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "b9d8",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "danielangelo1234@gmail.com",
+      "cpf": "213.321321.3123.213",
+      "telephone": "31982193060",
+      "birthDate": "2024-01-11T03:00:00.000Z",
+      "name": "teste"
+    },
+    {
+      "id": "81c6",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "deadea@gmail.com",
+      "cpf": "213.321321.312",
+      "telephone": "11 9231230-2312",
+      "birthDate": "2024-01-25T03:00:00.000Z",
+      "name": "pablo"
+    },
+    {
+      "id": "a25f",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "deadea@gmail.com",
+      "cpf": "213.321321.312",
+      "telephone": "11 9231230-2312",
+      "birthDate": "2024-01-25T03:00:00.000Z",
+      "name": "pablo"
     }
   ]
 }

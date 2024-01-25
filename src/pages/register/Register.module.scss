@@ -41,12 +41,12 @@ h1 {
         border-color: $so-green;
         color: #212529;
         box-shadow: 0 0 0 0.25rem rgba(40, 93, 86, 0.25);
-        &:invalid {
-          background-color: #fad9d9;
-        }
-        &:valid {
-          background-color: #e7f5e6;
-        }
+        // &:invalid {
+        //   background-color: #fad9d9;
+        // }
+        // &:valid {
+        //   background-color: #e7f5e6;
+        // }
       }
     }
     button {
@@ -110,6 +110,16 @@ h1 {
   color: #a12733;
   font-weight: 400;
   margin-bottom: 1rem;
+}
+
+.inputError {
+  background-color: #fad9d9;
+  border-color: #d9534f;
+}
+
+.inputValid {
+  background-color: #e7f5e6;
+  border-color: #5cb85c;
 }
 
 @media (max-width: 768px) {

@@ -13,8 +13,14 @@ interface FormData {
 }
 
 const schema = yup.object().shape({
-  email: yup.string().required("Email é obrigatório."),
-  password: yup.string().required("Senha é obrigatória"),
+  email: yup
+    .string()
+    .required("Email é obrigatório.")
+    .email("Digite um email válido."),
+  password: yup
+    .string()
+    .required("Senha é obrigatória")
+    .min(8, "A senha deve ter pelo menos 8 caracteres"),
 });
 
 const Login = () => {
@@ -34,10 +40,10 @@ const Login = () => {
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
       } else {
-        console.error("deu ruim");
+        alert("Não foi possível realizar o login");
       }
     } catch (error) {
-      console.error("falha no login", error);
+      console.error("Falha no login", error);
     }
   };
 
@@ -52,6 +58,9 @@ const Login = () => {
               type="email"
               id="email"
               {...register("email", { required: true })}
+              className={`${
+                errors.email ? style.inputError : style.inputValid
+              }`}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
@@ -64,6 +73,9 @@ const Login = () => {
               type="password"
               id="password"
               {...register("password", { required: true })}
+              className={`${
+                errors.password ? style.inputError : style.inputValid
+              }`}
             />
             {errors.password && (
               <p className={style.error_message}>{errors.password.message}</p>
