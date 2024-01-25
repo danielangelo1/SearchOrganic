@@ -8,7 +8,7 @@ const OurMission = () => {
       <section className={style.so_missao}>
         <div className={style.missao}>
           <div>
-            <span>Porque escolher-nos?</span>
+            <span>Por que nos escolher?</span>
             <h2>Nossa missão e compromisso</h2>
 
             <p>
