@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "daniel",
+      "email": "daniel@gmail.com",
+      "birthDate": "15/02/2003",
+      "telephone": "31 9232-3242",
+      "CPF": "123.456.789-12",
+      "password": "123",
+      "id": "1"
+    },
+    {
+      "id": "3f86",
+      "name": "pablo",
+      "birthDate": "2024-01-25",
+      "telephone": "11 9231230-2312",
+      "cpf": "213.321321.3123.213",
+      "email": "deadea@gmail.com",
+      "password": "123"
+    }
+  ]
+}

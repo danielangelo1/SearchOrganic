@@ -33,19 +33,19 @@ const Home = () => {
           <CardProduct
             imgsrc={imagemProduct2}
             name="Tomate Italiano"
-            price="R$ 7,40"
+            price="R$ 9,90"
           />
           <CardProduct
             imgsrc={imagemProduct3}
             name="Mamão Papaya"
-            price="R$ 7,40"
+            price="R$ 8,20"
           />
           <CardProduct
             imgsrc={imagemProduct4}
             name="Tomate Perinha"
-            price="R$ 7,40"
+            price="R$ 7,90"
           />
-          <CardProduct imgsrc={imagemProduct5} name="Cenoura" price="R$ 7,40" />
+          <CardProduct imgsrc={imagemProduct5} name="Cenoura" price="R$ 6,90" />
         </div>
       </section>
 
