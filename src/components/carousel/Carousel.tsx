@@ -60,7 +60,6 @@ const Carousel = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide className={style.slide_item}>
-        adi
         <img
           srcSet={`${imageSmall3} 400w, ${imageLarge3}   900w, ${imageXLarge3} 1280w`}
           src={`${imageXLarge3}`}

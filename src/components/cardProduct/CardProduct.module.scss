@@ -1,69 +1,68 @@
 @import "../../App.scss";
 
 .card_product {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    border: 1px solid $so-gray-100;
-    padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid $so-gray-100;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 22px -8px rgba(0, 0, 0, 0.1);
+
+  div:first-child {
+    position: relative;
+
+    img:first-child {
+      width: 234px;
+    }
+
+    img:nth-child(2) {
+      position: absolute;
+      top: 190px;
+      left: 8px;
+      width: 72px;
+    }
+  }
+  button {
+    all: unset;
+    margin-top: 8px;
+    padding: 6px;
+    background-color: $so-green;
+    color: $so-white;
     border-radius: 4px;
-    box-shadow: 4px 4px 22px -8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    cursor: pointer;
 
-
-    div:first-child {
-        position: relative;
-
-        img:first-child {
-            width: 234px;
-        }
-
-        img:nth-child(2) {
-            position: absolute;
-            top: 185px;
-            left: 8px;
-        }
+    &:hover {
+      background-color: #204a45;
     }
-    button {
-        all: unset;      
-        margin-top: 8px;
-        padding: 6px;
-        background-color: $so-green;
-        color: $so-white;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #204a45;
-        }
-    }
+  }
 }
 
 .favorite_button {
-    background-color: white;
-    width: fit-content;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    border-radius: 16px;
-    box-shadow: 4px 4px 22px 9px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 185px;
-    left: 185px;
-    cursor: pointer;
+  background-color: white;
+  width: fit-content;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: 4px 4px 22px 9px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 185px;
+  left: 185px;
+  cursor: pointer;
 }
 
 .card_product_body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 
-    span:first-child {
-        font-weight: 500;
-    }
-    span:nth-child(2) {
-        font-weight: 700;
-    }
-
+  span:first-child {
+    font-weight: 500;
+  }
+  span:nth-child(2) {
+    font-weight: 700;
+  }
 }
