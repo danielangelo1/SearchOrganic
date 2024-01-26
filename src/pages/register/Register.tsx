@@ -5,6 +5,8 @@ import axios, { AxiosResponse } from "axios";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+
 interface userRegistrationResponse {
   id: string | number;
   error?: string;
@@ -38,11 +40,11 @@ const schema = yup.object().shape({
 });
 
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<UserFormData>({
     resolver: yupResolver(schema),
   });
@@ -53,7 +55,7 @@ const Register = () => {
         await axios.post("http://localhost:3001/users", data);
       alert(`Usuário registrado com o ID:${response.data.id}`);
 
-      reset();
+      navigate("/login");
     } catch (error) {
       console.error("User não cadastrado");
     }
