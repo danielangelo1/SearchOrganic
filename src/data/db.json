@@ -47,6 +47,16 @@
       "telephone": "11 9231230-2312",
       "birthDate": "2024-01-25T03:00:00.000Z",
       "name": "pablo"
+    },
+    {
+      "id": "389c",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "danielangelo1234@gmail.com",
+      "cpf": "125.457.896-00",
+      "telephone": "31982193060",
+      "birthDate": "2024-01-10T03:00:00.000Z",
+      "name": "Daniel Angelo Rosa Morais"
     }
   ]
 }

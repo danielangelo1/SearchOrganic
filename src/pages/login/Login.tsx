@@ -15,21 +15,25 @@ interface FormData {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required("Email é obrigatório.")
-    .email("Digite um email válido."),
+    .required("O campo email é obrigatório.")
+    .email("Digite um email válido, incluindo @ e . para realizar o login."),
   password: yup
     .string()
-    .required("Senha é obrigatória")
-    .min(8, "A senha deve ter pelo menos 8 caracteres"),
+    .required("O campo senha é obrigatória")
+    .min(
+      8,
+      "Digite sua senha com no mínimo 8 caracteres para realizar o login"
+    ),
 });
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
 
   const onSubmit = async (data: FormData) => {
@@ -49,18 +53,22 @@ const Login = () => {
 
   return (
     <div>
-      <main className={style.main}>
+      <main className={style.mainLogin}>
         <h1>Login</h1>
         <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.formLabelInput}>
-            <label htmlFor="email">Endereço de e-mail</label>
+            <label htmlFor="email">
+              Endereço de e-mail <span>*</span>
+            </label>
             <input
               type="email"
               id="email"
+              maxLength={50}
+              min={1}
               {...register("email", { required: true })}
               className={`${
-                errors.email ? style.inputError : style.inputValid
-              }`}
+                touchedFields.email && !errors.email ? style.inputValid : ""
+              } ${errors.email ? style.inputError : ""}`}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
@@ -68,14 +76,19 @@ const Login = () => {
           </div>
 
           <div className={style.formLabelInput}>
-            <label htmlFor="password">Senha</label>
+            <label htmlFor="password">
+              Senha <span>*</span>
+            </label>
             <input
               type="password"
               id="password"
+              min={1}
               {...register("password", { required: true })}
               className={`${
-                errors.password ? style.inputError : style.inputValid
-              }`}
+                touchedFields.password && !errors.password
+                  ? style.inputValid
+                  : ""
+              } ${errors.password ? style.inputError : ""}`}
             />
             {errors.password && (
               <p className={style.error_message}>{errors.password.message}</p>
