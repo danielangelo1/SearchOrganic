@@ -1,11 +1,11 @@
-import React from 'react';
-import style from './Login.module.scss';
-import { Link } from 'react-router-dom';
-import { FacebookLogo, GoogleLogo } from '@phosphor-icons/react';
-import axios from 'axios';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React from "react";
+import style from "./Login.module.scss";
+import { Link } from "react-router-dom";
+import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
+import axios from "axios";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface FormData {
   email: string;
@@ -15,14 +15,14 @@ interface FormData {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required('O campo email é obrigatório.')
-    .email('Digite um email válido, incluindo @ e . para realizar o login.'),
+    .required("O campo email é obrigatório.")
+    .email("Digite um email válido, incluindo @ e . para realizar o login."),
   password: yup
     .string()
-    .required('O campo senha é obrigatória')
+    .required("O campo senha é obrigatória")
     .min(
       8,
-      'Digite sua senha com no mínimo 8 caracteres para realizar o login'
+      "Digite sua senha com no mínimo 8 caracteres para realizar o login"
     ),
 });
 
@@ -30,9 +30,10 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
 
   const onSubmit = async (data: FormData) => {
@@ -43,10 +44,10 @@ const Login = () => {
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
       } else {
-        alert('Não foi possível realizar o login');
+        alert("Não foi possível realizar o login");
       }
     } catch (error) {
-      console.error('Falha no login', error);
+      console.error("Falha no login", error);
     }
   };
 
@@ -62,11 +63,12 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              maxLength={50}
               min={1}
-              {...register('email', { required: true })}
+              {...register("email", { required: true })}
               className={`${
-                errors.email ? style.inputError : style.inputValid
-              }`}
+                touchedFields.email && !errors.email ? style.inputValid : ""
+              } ${errors.email ? style.inputError : ""}`}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
@@ -81,10 +83,12 @@ const Login = () => {
               type="password"
               id="password"
               min={1}
-              {...register('password', { required: true })}
+              {...register("password", { required: true })}
               className={`${
-                errors.password ? style.inputError : style.inputValid
-              }`}
+                touchedFields.password && !errors.password
+                  ? style.inputValid
+                  : ""
+              } ${errors.password ? style.inputError : ""}`}
             />
             {errors.password && (
               <p className={style.error_message}>{errors.password.message}</p>
@@ -101,7 +105,7 @@ const Login = () => {
 
         <div className={style.sectionRegister}>
           <p>
-            Novo no Search Organic? <Link to={'/register'}>CADASTRE-SE</Link>
+            Novo no Search Organic? <Link to={"/register"}>CADASTRE-SE</Link>
           </p>
           <p>Quero acessar com minhas redes sociais</p>
 
