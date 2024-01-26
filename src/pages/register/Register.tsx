@@ -44,9 +44,10 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm<UserFormData>({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
 
   const onSubmit: SubmitHandler<UserFormData> = async (data) => {
@@ -70,90 +71,125 @@ const Register = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
-            <label htmlFor="name">Nome Completo *</label>
+            <label htmlFor="name">
+              Nome Completo <span>*</span>
+            </label>
             <input
               type="text"
               id="name"
+              maxLength={50}
               {...register("name", { required: true })}
-              className={`${errors.name ? style.inputError : style.inputValid}`}
+              className={`${
+                touchedFields.name && !errors.name ? style.inputValid : ""
+              } ${errors.name ? style.inputError : ""}`}
             />
             {errors.name && (
               <p className={style.error_message}>{errors.name.message}</p>
             )}
 
-            <label htmlFor="birthDate">Data de nascimento *</label>
+            <label htmlFor="birthDate">
+              Data de nascimento <span>*</span>
+            </label>
             <input
               type="date"
               id="birthDate"
               {...register("birthDate", { required: true })}
               className={`${
-                errors.birthDate ? style.inputError : style.inputValid
-              }`}
+                touchedFields.birthDate && !errors.birthDate
+                  ? style.inputValid
+                  : ""
+              } ${errors.birthDate ? style.inputError : ""}`}
             />
             {errors.birthDate && (
               <p className={style.error_message}>{errors.birthDate.message}</p>
             )}
 
-            <label htmlFor="telephone">Telefone celular *</label>
+            <label htmlFor="telephone">
+              Telefone celular <span>*</span>
+            </label>
             <input
               type="text"
               id="telephone"
+              maxLength={13}
               placeholder="99 99876-2342"
               {...register("telephone", { required: true })}
               className={`${
-                errors.telephone ? style.inputError : style.inputValid
-              }`}
+                touchedFields.telephone && !errors.telephone
+                  ? style.inputValid
+                  : ""
+              } ${errors.telephone ? style.inputError : ""}`}
             />
             {errors.telephone && (
               <p className={style.error_message}>{errors.telephone.message}</p>
             )}
+            <div className={style.required}>99 99999-9999</div>
 
-            <label htmlFor="cpf">CPF *</label>
+            <label htmlFor="cpf">
+              CPF <span>*</span>
+            </label>
             <input
               type="text"
               id="cpf"
-              placeholder="123.456.789-12"
-              className={`${errors.cpf ? style.inputError : style.inputValid}`}
+              maxLength={14}
+              className={`${
+                touchedFields.cpf && !errors.cpf ? style.inputValid : ""
+              } ${errors.cpf ? style.inputError : ""}`}
               {...register("cpf", { required: true })}
             />
             {errors.cpf && (
               <p className={style.error_message}>{errors.cpf.message}</p>
             )}
 
-            <label htmlFor="email">Email *</label>
+            <div className={style.required}>999.999.999-99</div>
+
+            <label htmlFor="email">
+              Email <span>*</span>
+            </label>
             <input
               type="email"
               id="email"
+              maxLength={50}
               {...register("email", { required: true })}
               className={`${
-                errors.email ? style.inputError : style.inputValid
-              }`}
+                touchedFields.email && !errors.email ? style.inputValid : ""
+              } ${errors.email ? style.inputError : ""}`}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
             )}
 
-            <label htmlFor="password">Crie sua senha *</label>
+            <label htmlFor="password">
+              Crie sua senha <span>*</span>
+            </label>
             <input
               type="password"
               id="password"
+              maxLength={50}
               {...register("password", { required: true })}
               className={`${
-                errors.password ? style.inputError : style.inputValid
-              }`}
+                touchedFields.password && !errors.password
+                  ? style.inputValid
+                  : ""
+              } ${errors.password ? style.inputError : ""}`}
             />
             {errors.password && (
               <p className={style.error_message}>{errors.password.message}</p>
             )}
 
-            <label htmlFor="passConfirmation">Confirme sua senha *</label>
+            <div className={style.required}>Ao menos 8 caracteres</div>
+            <label htmlFor="passConfirmation">
+              Confirme sua senha <span>*</span>
+            </label>
             <input
               type="password"
               id="passConfirmation"
+              maxLength={50}
               {...register("passConfirmation", { required: true })}
               className={`${
-                errors.passConfirmation ? style.inputError : style.inputValid
-              }`}
+                touchedFields.passConfirmation && !errors.passConfirmation
+                  ? style.inputValid
+                  : ""
+              } ${errors.passConfirmation ? style.inputError : ""}`}
             />
             {errors.passConfirmation && (
               <p className={style.error_message}>
