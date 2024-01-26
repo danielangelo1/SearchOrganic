@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .mainLogin {
   display: flex;
@@ -41,7 +41,7 @@ h1 {
   input {
     width: 100%;
     padding: 0.5rem;
-    border: 2px solid $so-gray-200;
+    border: 1px solid $so-gray-200;
     border-radius: 4px;
     font-size: 1rem;
     font-weight: 400;

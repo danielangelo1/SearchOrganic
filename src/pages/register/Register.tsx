@@ -26,7 +26,11 @@ const schema = yup.object().shape({
   name: yup.string().required("Nome completo é obrigatório"),
   birthDate: yup.date().required("Data de nascimento é obrigatória"),
   telephone: yup.string().required("Telefone é obrigatório"),
-  cpf: yup.string().required("CPF é obrigatório").max(14).min(14),
+  cpf: yup
+    .string()
+    .required("CPF é obrigatório")
+    .max(14, "CPF deve seguir o formato 123.123.123-11")
+    .min(14, "CPF deve seguir o formato 123.123.123-11"),
   // .test("is-cpf", "CPF inválido", validateCPF),
   email: yup.string().required("Email é obrigatório").email("Email inválido"),
   password: yup
