@@ -1,19 +1,19 @@
-import React from "react";
-import ProductsNavBar from "../../components/productsNavBar/ProductsNavBar";
-import style from "./Home.module.scss";
-import CardTestimony from "../../components/cardTestimony/CardTestimony";
-import imageTestimony1 from "../../assets/depoimento-1-300.jpg";
-import imageTestimony2 from "../../assets/depoimento-2-300.jpg";
-import imageTestimony3 from "../../assets/depoimento-3-300.jpg";
-import imagePropaganda from "../../assets/propaganda-imagem-400.webp";
-import Carousel from "../../components/carousel/Carousel";
-import CardProduct from "../../components/cardProduct/CardProduct";
-import imagemProduct1 from "../../assets/alface-americana-product.webp";
-import imagemProduct2 from "../../assets/tomate-italiano-product.webp";
-import imagemProduct3 from "../../assets/mamao-papaya-product.webp";
-import imagemProduct4 from "../../assets/tomate-perinha-product.webp";
-import imagemProduct5 from "../../assets/cenoura-product.webp";
-import OurMission from "../../components/ourMission/OurMission";
+import React from 'react';
+import ProductsNavBar from '../../components/productsNavBar/ProductsNavBar';
+import style from './Home.module.scss';
+import CardTestimony from '../../components/cardTestimony/CardTestimony';
+import imageTestimony1 from '../../assets/depoimento-1-300.webp';
+import imageTestimony2 from '../../assets/depoimento-2-300.webp';
+import imageTestimony3 from '../../assets/depoimento-3-300.webp';
+import imagePropaganda from '../../assets/propaganda-imagem-400.webp';
+import Carousel from '../../components/carousel/Carousel';
+import CardProduct from '../../components/cardProduct/CardProduct';
+import imagemProduct1 from '../../assets/alface-americana-product.webp';
+import imagemProduct2 from '../../assets/tomate-italiano-product.webp';
+import imagemProduct3 from '../../assets/mamao-papaya-product.webp';
+import imagemProduct4 from '../../assets/tomate-perinha-product.webp';
+import imagemProduct5 from '../../assets/cenoura-product.webp';
+import OurMission from '../../components/ourMission/OurMission';
 
 const Home = () => {
   return (
@@ -63,6 +63,7 @@ const Home = () => {
           <img
             src={imagePropaganda}
             alt="Foto mostrando uma variedade de produtos orgânicos"
+            loading="lazy"
           />
         </div>
       </section>

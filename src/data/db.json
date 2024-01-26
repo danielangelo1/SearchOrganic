@@ -3,10 +3,60 @@
     {
       "name": "daniel",
       "email": "daniel@gmail.com",
-      "telephone": "31 9232-3242",
       "birthDate": "15/02/2003",
+      "telephone": "31 9232-3242",
+      "CPF": "123.456.789-12",
       "password": "123",
       "id": "1"
+    },
+    {
+      "id": "3f86",
+      "name": "pablo",
+      "birthDate": "2024-01-25",
+      "telephone": "11 9231230-2312",
+      "cpf": "213.321321.3123.213",
+      "email": "deadea@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b9d8",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "danielangelo1234@gmail.com",
+      "cpf": "213.321321.3123.213",
+      "telephone": "31982193060",
+      "birthDate": "2024-01-11T03:00:00.000Z",
+      "name": "teste"
+    },
+    {
+      "id": "81c6",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "deadea@gmail.com",
+      "cpf": "213.321321.312",
+      "telephone": "11 9231230-2312",
+      "birthDate": "2024-01-25T03:00:00.000Z",
+      "name": "pablo"
+    },
+    {
+      "id": "a25f",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "deadea@gmail.com",
+      "cpf": "213.321321.312",
+      "telephone": "11 9231230-2312",
+      "birthDate": "2024-01-25T03:00:00.000Z",
+      "name": "pablo"
+    },
+    {
+      "id": "389c",
+      "passConfirmation": "12345678",
+      "password": "12345678",
+      "email": "danielangelo1234@gmail.com",
+      "cpf": "125.457.896-00",
+      "telephone": "31982193060",
+      "birthDate": "2024-01-10T03:00:00.000Z",
+      "name": "Daniel Angelo Rosa Morais"
     }
   ]
 }
