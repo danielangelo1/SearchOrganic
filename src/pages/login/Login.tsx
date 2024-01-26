@@ -1,11 +1,11 @@
-import React from "react";
-import style from "./Login.module.scss";
-import { Link } from "react-router-dom";
-import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
-import axios from "axios";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import React from 'react';
+import style from './Login.module.scss';
+import { Link } from 'react-router-dom';
+import { FacebookLogo, GoogleLogo } from '@phosphor-icons/react';
+import axios from 'axios';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 interface FormData {
   email: string;
@@ -15,12 +15,15 @@ interface FormData {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required("Email é obrigatório.")
-    .email("Digite um email válido."),
+    .required('O campo email é obrigatório.')
+    .email('Digite um email válido, incluindo @ e . para realizar o login.'),
   password: yup
     .string()
-    .required("Senha é obrigatória")
-    .min(8, "A senha deve ter pelo menos 8 caracteres"),
+    .required('O campo senha é obrigatória')
+    .min(
+      8,
+      'Digite sua senha com no mínimo 8 caracteres para realizar o login'
+    ),
 });
 
 const Login = () => {
@@ -40,24 +43,27 @@ const Login = () => {
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
       } else {
-        alert("Não foi possível realizar o login");
+        alert('Não foi possível realizar o login');
       }
     } catch (error) {
-      console.error("Falha no login", error);
+      console.error('Falha no login', error);
     }
   };
 
   return (
     <div>
-      <main className={style.main}>
+      <main className={style.mainLogin}>
         <h1>Login</h1>
         <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.formLabelInput}>
-            <label htmlFor="email">Endereço de e-mail</label>
+            <label htmlFor="email">
+              Endereço de e-mail <span>*</span>
+            </label>
             <input
               type="email"
               id="email"
-              {...register("email", { required: true })}
+              min={1}
+              {...register('email', { required: true })}
               className={`${
                 errors.email ? style.inputError : style.inputValid
               }`}
@@ -68,11 +74,14 @@ const Login = () => {
           </div>
 
           <div className={style.formLabelInput}>
-            <label htmlFor="password">Senha</label>
+            <label htmlFor="password">
+              Senha <span>*</span>
+            </label>
             <input
               type="password"
               id="password"
-              {...register("password", { required: true })}
+              min={1}
+              {...register('password', { required: true })}
               className={`${
                 errors.password ? style.inputError : style.inputValid
               }`}
@@ -92,7 +101,7 @@ const Login = () => {
 
         <div className={style.sectionRegister}>
           <p>
-            Novo no Search Organic? <Link to={"/register"}>CADASTRE-SE</Link>
+            Novo no Search Organic? <Link to={'/register'}>CADASTRE-SE</Link>
           </p>
           <p>Quero acessar com minhas redes sociais</p>
 

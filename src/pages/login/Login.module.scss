@@ -1,11 +1,11 @@
-@import "../../App.scss";
+@import '../../App.scss';
 
-main {
-  margin-top: 3rem;
-  padding: 1rem;
+.mainLogin {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -17,38 +17,42 @@ h1 {
 .formContainer {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   gap: 16px;
+  min-width: 100%;
   width: 50%;
-  max-width: 500px;
-  min-width: 300px;
+  padding: 2rem;
+  border-radius: 4px;
 }
 
 .formLabelInput {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 
   label {
+    font-size: 1.2rem;
     font-weight: 600;
+    margin-bottom: 0.5rem;
+    span {
+      color: red;
+    }
   }
 
   input {
+    width: 100%;
+    padding: 0.5rem;
     border: 2px solid $so-gray-200;
-    padding: 8px 12px;
     border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    outline: none;
 
     &:focus {
       border-color: $so-green;
       color: #212529;
       box-shadow: 0 0 0 0.25rem rgba(40, 93, 86, 0.25);
       outline: none;
-
-      // &:invalid {
-      //   background-color: #fad9d9;
-      // }
-      // &:valid {
-      //   background-color: #e7f5e6;
-      // }
     }
   }
 }
@@ -86,8 +90,10 @@ h1 {
 .sectionRegister {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
+  gap: 2rem;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
   a {
     text-decoration: none;
     color: $so-green;
@@ -123,7 +129,8 @@ h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 2rem;
+  align-items: center;
 }
 
 .btnGoogle,
@@ -136,17 +143,24 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  max-width: 40%;
+  width: 150px;
 }
 
 .btnFacebook {
   background-color: #3b5998;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     background-color: #293d69;
   }
 }
 
 .btnGoogle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #dc3545;
   border-color: #dc3545;
 
@@ -169,4 +183,72 @@ h1 {
 .inputValid {
   background-color: #e7f5e6;
   border-color: #5cb85c;
+}
+
+.inputError {
+  background-color: #fad9d9;
+  border-color: #d9534f;
+}
+
+.inputValid {
+  background-color: #e7f5e6;
+  border-color: #5cb85c;
+}
+
+footer {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .mainLogin {
+    margin-top: 3rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .sectionRegister {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+    a {
+      text-decoration: none;
+      color: $so-green;
+      font-weight: 600;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      font-weight: 500;
+    }
+
+    p:first-child {
+      margin-bottom: 1rem;
+    }
+    p:nth-child(2) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .btnGoogle,
+  .btnFacebook {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 150px;
+    width: 150px;
+  }
 }
