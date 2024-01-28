@@ -7,6 +7,7 @@ import News from "../pages/news/News";
 import About from "../pages/about/About";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import ProtectedRoute from "../pages/ProtectedRoute";
 
 const Router = () => {
   return (
@@ -14,8 +15,16 @@ const Router = () => {
       <Route path="/" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route path="/news" element={<News />} />
-      <Route path="/about" element={<About />} />
+      {/* <Route path="/about" element={<About />} /> */}
       <Route path="/login" element={<Login />} />
+      <Route
+        path="/about"
+        element={
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/register" element={<Register />} />
     </Routes>
   );

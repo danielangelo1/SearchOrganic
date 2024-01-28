@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Login.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
 import axios from "axios";
 import * as yup from "yup";
@@ -22,11 +22,13 @@ const schema = yup.object().shape({
     .required("O campo senha é obrigatória")
     .min(
       8,
-      "Digite sua senha com no mínimo 8 caracteres para realizar o login"
+      "Digite sua senha com no mínimo 8 caracteres para realizar o login",
     ),
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -39,10 +41,12 @@ const Login = () => {
   const onSubmit = async (data: FormData) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/users?email=${data.email}&password=${data.password}`
+        `http://localhost:3001/users?email=${data.email}&password=${data.password}`,
       );
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
+        localStorage.setItem("isLogged", "true");
+        navigate("/about");
       } else {
         alert("Não foi possível realizar o login");
       }
@@ -50,6 +54,8 @@ const Login = () => {
       console.error("Falha no login", error);
     }
   };
+
+  localStorage.setItem("isLogged", "false");
 
   return (
     <div>
