@@ -7,12 +7,13 @@ interface CardProductProps {
   imgsrc: string;
   name: string;
   price: string;
+  tabindex?: number;
 }
 
-const CardProduct = ({ imgsrc, name, price }: CardProductProps) => {
+const CardProduct = ({ imgsrc, name, price, tabindex }: CardProductProps) => {
   return (
     <>
-      <div className={style.card_product}>
+      <div className={style.card_product} tabIndex={tabindex}>
         <div>
           <img src={imgsrc} alt={`Imagem do produto ${name}`} loading="lazy" />
           <img src={imgOrganic} alt="Produto orgânico" loading="lazy" />
@@ -24,7 +25,7 @@ const CardProduct = ({ imgsrc, name, price }: CardProductProps) => {
           <span>{name}</span>
           <span>{price}</span>
         </div>
-        <button>Adicionar</button>
+        <button tabIndex={tabindex}>Adicionar</button>
       </div>
     </>
   );
