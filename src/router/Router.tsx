@@ -1,31 +1,62 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Home from "../pages/home/Home";
-import Store from "../pages/store/Store";
-import News from "../pages/news/News";
-import About from "../pages/about/About";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-import ProtectedRoute from "../pages/ProtectedRoute";
+import Home from '../pages/home/Home';
+import ProtectedRoute from '../pages/ProtectedRoute';
+
+const LazyStore = lazy(() => import('../pages/store/Store'));
+const LazyNews = lazy(() => import('../pages/news/News'));
+const LazyAbout = lazy(() => import('../pages/about/About'));
+const LazyLogin = lazy(() => import('../pages/login/Login'));
+const LazyRegister = lazy(() => import('../pages/register/Register'));
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/store" element={<Store />} />
-      <Route path="/news" element={<News />} />
+      <Route
+        path="/store"
+        element={
+          <Suspense>
+            <LazyStore />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/news"
+        element={
+          <Suspense>
+            <LazyNews />
+          </Suspense>
+        }
+      />
       {/* <Route path="/about" element={<About />} /> */}
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          <Suspense>
+            <LazyLogin />
+          </Suspense>
+        }
+      />
       <Route
         path="/about"
         element={
           <ProtectedRoute>
-            <About />
+            <Suspense>
+              <LazyAbout />
+            </Suspense>
           </ProtectedRoute>
         }
       />
-      <Route path="/register" element={<Register />} />
+      <Route
+        path="/register"
+        element={
+          <Suspense>
+            <LazyRegister />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
