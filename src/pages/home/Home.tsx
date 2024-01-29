@@ -29,23 +29,32 @@ const Home = () => {
             imgsrc={imagemProduct1}
             name="Alface Americana"
             price="R$ 7,40"
+            tabindex={12}
           />
           <CardProduct
             imgsrc={imagemProduct2}
             name="Tomate Italiano"
             price="R$ 9,90"
+            tabindex={13}
           />
           <CardProduct
             imgsrc={imagemProduct3}
             name="Mamão Papaya"
             price="R$ 8,20"
+            tabindex={14}
           />
           <CardProduct
             imgsrc={imagemProduct4}
             name="Tomate Perinha"
             price="R$ 7,90"
+            tabindex={15}
           />
-          <CardProduct imgsrc={imagemProduct5} name="Cenoura" price="R$ 6,90" />
+          <CardProduct
+            imgsrc={imagemProduct5}
+            name="Cenoura"
+            price="R$ 6,90"
+            tabindex={16}
+          />
         </div>
       </section>
 
@@ -57,7 +66,7 @@ const Home = () => {
             a venda de produtos do campo diretamente aos consumidores, com um
             preço mais acessível!
           </p>
-          <button>Saiba mais!</button>
+          <button tabIndex={17}>Saiba mais!</button>
         </div>
         <div className={style.propaganda_img_container}>
           <img

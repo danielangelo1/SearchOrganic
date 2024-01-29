@@ -1,11 +1,11 @@
-import React from "react";
-import style from "./Login.module.scss";
-import { Link } from "react-router-dom";
-import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
-import axios from "axios";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import React from 'react';
+import style from './Login.module.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { FacebookLogo, GoogleLogo } from '@phosphor-icons/react';
+import axios from 'axios';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 interface FormData {
   email: string;
@@ -15,25 +15,27 @@ interface FormData {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required("O campo email é obrigatório.")
-    .email("Digite um email válido, incluindo @ e . para realizar o login."),
+    .required('O campo email é obrigatório.')
+    .email('Digite um email válido, incluindo @ e . para realizar o login.'),
   password: yup
     .string()
-    .required("O campo senha é obrigatória")
+    .required('O campo senha é obrigatória')
     .min(
       8,
-      "Digite sua senha com no mínimo 8 caracteres para realizar o login"
+      'Digite sua senha com no mínimo 8 caracteres para realizar o login'
     ),
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const onSubmit = async (data: FormData) => {
@@ -43,13 +45,17 @@ const Login = () => {
       );
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
+        localStorage.setItem('isLogged', 'true');
+        navigate('/about');
       } else {
-        alert("Não foi possível realizar o login");
+        alert('Não foi possível realizar o login');
       }
     } catch (error) {
-      console.error("Falha no login", error);
+      console.error('Falha no login', error);
     }
   };
+
+  localStorage.setItem('isLogged', 'false');
 
   return (
     <div>
@@ -65,10 +71,11 @@ const Login = () => {
               id="email"
               maxLength={50}
               min={1}
-              {...register("email", { required: true })}
+              {...register('email', { required: true })}
               className={`${
-                touchedFields.email && !errors.email ? style.inputValid : ""
-              } ${errors.email ? style.inputError : ""}`}
+                touchedFields.email && !errors.email ? style.inputValid : ''
+              } ${errors.email ? style.inputError : ''}`}
+              tabIndex={1}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
@@ -83,12 +90,13 @@ const Login = () => {
               type="password"
               id="password"
               min={1}
-              {...register("password", { required: true })}
+              {...register('password', { required: true })}
               className={`${
                 touchedFields.password && !errors.password
                   ? style.inputValid
-                  : ""
-              } ${errors.password ? style.inputError : ""}`}
+                  : ''
+              } ${errors.password ? style.inputError : ''}`}
+              tabIndex={2}
             />
             {errors.password && (
               <p className={style.error_message}>{errors.password.message}</p>
@@ -96,8 +104,10 @@ const Login = () => {
           </div>
 
           <div className={style.formLinks}>
-            <button type="submit">Entrar</button>
-            <span>Esqueci a senha</span>
+            <button type="submit" tabIndex={3}>
+              Entrar
+            </button>
+            <span tabIndex={4}>Esqueci a senha</span>
           </div>
         </form>
 
@@ -105,17 +115,20 @@ const Login = () => {
 
         <div className={style.sectionRegister}>
           <p>
-            Novo no Search Organic? <Link to={"/register"}>CADASTRE-SE</Link>
+            Novo no Search Organic?{' '}
+            <Link to={'/register'} tabIndex={5}>
+              CADASTRE-SE
+            </Link>
           </p>
           <p>Quero acessar com minhas redes sociais</p>
 
           <div className={style.socialMediaContainer}>
-            <div className={style.btnFacebook}>
+            <div className={style.btnFacebook} tabIndex={6}>
               <FacebookLogo size={16} weight="bold" />
               <span>Facebook</span>
             </div>
 
-            <div className={style.btnGoogle}>
+            <div className={style.btnGoogle} tabIndex={7}>
               <GoogleLogo size={16} weight="bold" />
               <span>Google</span>
             </div>
