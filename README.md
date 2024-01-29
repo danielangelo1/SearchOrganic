@@ -128,4 +128,4 @@ O Search Organic tem como objetivo conectar pequenos produtores com clientes que
 
 - Próximos passos:
 
-Alinhamento com a equipe do back-end para criação de endpoints para recuperar senha, cadastro de solicitações, configuração de servidor para envio de e-mail.
+Alinhamento com a equipe do back-end para criação de endpoints para recuperar senha, cadastro de solicitações, configuração de servidor para envio de e-mails.
