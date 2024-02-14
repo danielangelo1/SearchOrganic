@@ -6,6 +6,8 @@ import axios from 'axios';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAppDispatch } from '../../feature/hooks/hooks';
+import { setLogin } from '../../feature/loginSlice';
 
 interface FormData {
   email: string;
@@ -28,9 +30,11 @@ const schema = yup.object().shape({
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const {
     register,
+    getValues,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm<FormData>({
@@ -46,6 +50,7 @@ const Login = () => {
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
         localStorage.setItem('isLogged', 'true');
+        dispatch(setLogin(getValues('email')));
         navigate('/about');
       } else {
         alert('Não foi possível realizar o login');

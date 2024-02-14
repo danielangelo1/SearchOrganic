@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+import { useAppSelector } from '../../feature/hooks/hooks';
 
 const About = () => {
-  return <div>About</div>;
+  const loginData = useAppSelector((state) => state.login) || '';
+  console.log(loginData);
+  return (
+    <div>
+      <h1>About</h1>
+      <p>Olá, {loginData.login}</p>
+    </div>
+  );
 };
 
 export default About;
