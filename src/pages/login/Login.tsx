@@ -44,7 +44,6 @@ const Login = () => {
       const response = await login.post('/auth/login', data, {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
           Accept: '*/*',
         },
       });
