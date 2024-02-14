@@ -2,22 +2,21 @@ import React from 'react';
 import style from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { FacebookLogo, GoogleLogo } from '@phosphor-icons/react';
-import axios from 'axios';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAppDispatch } from '../../feature/hooks/hooks';
+import { setLogin } from '../../feature/loginSlice';
+import { login } from '../../axios/axios';
 
 interface FormData {
-  email: string;
-  password: string;
+  login: string;
+  senha: string;
 }
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .required('O campo email é obrigatório.')
-    .email('Digite um email válido, incluindo @ e . para realizar o login.'),
-  password: yup
+  login: yup.string().required('O campo login é obrigatório.'),
+  senha: yup
     .string()
     .required('O campo senha é obrigatória')
     .min(
@@ -28,9 +27,11 @@ const schema = yup.object().shape({
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const {
     register,
+    getValues,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm<FormData>({
@@ -40,12 +41,18 @@ const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/users?email=${data.email}&password=${data.password}`
-      );
+      const response = await login.post('/auth/login', data, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          Accept: '*/*',
+        },
+      });
+      console.log(response.data);
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
         localStorage.setItem('isLogged', 'true');
+        dispatch(setLogin(getValues('login')));
         navigate('/about');
       } else {
         alert('Não foi possível realizar o login');
@@ -64,21 +71,21 @@ const Login = () => {
         <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.formLabelInput}>
             <label htmlFor="email">
-              Endereço de e-mail <span>*</span>
+              Digite seu login <span>*</span>
             </label>
             <input
-              type="email"
-              id="email"
+              type="text"
+              id="login"
               maxLength={50}
               min={1}
-              {...register('email', { required: true })}
+              {...register('login', { required: true })}
               className={`${
-                touchedFields.email && !errors.email ? style.inputValid : ''
-              } ${errors.email ? style.inputError : ''}`}
+                touchedFields.login && !errors.login ? style.inputValid : ''
+              } ${errors.login ? style.inputError : ''}`}
               tabIndex={1}
             />
-            {errors.email && (
-              <p className={style.error_message}>{errors.email.message}</p>
+            {errors.login && (
+              <p className={style.error_message}>{errors.login.message}</p>
             )}
           </div>
 
@@ -88,18 +95,16 @@ const Login = () => {
             </label>
             <input
               type="password"
-              id="password"
+              id="senha"
               min={1}
-              {...register('password', { required: true })}
+              {...register('senha', { required: true })}
               className={`${
-                touchedFields.password && !errors.password
-                  ? style.inputValid
-                  : ''
-              } ${errors.password ? style.inputError : ''}`}
+                touchedFields.senha && !errors.senha ? style.inputValid : ''
+              } ${errors.senha ? style.inputError : ''}`}
               tabIndex={2}
             />
-            {errors.password && (
-              <p className={style.error_message}>{errors.password.message}</p>
+            {errors.senha && (
+              <p className={style.error_message}>{errors.senha.message}</p>
             )}
           </div>
 
