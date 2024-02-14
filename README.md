@@ -75,7 +75,7 @@ npm install -g json-server
 5. Execute o servidor com o comando abaixo:
 
 ```
-json-server --watch db.json --port 3001
+json-server --watch ./src/data/db.json --port 3001
 ```
 
 ## Endpoints
