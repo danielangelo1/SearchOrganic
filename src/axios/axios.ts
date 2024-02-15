@@ -1,9 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
-axios.defaults.headers.post['Content-Type'] =
-  'application/x-www-form-urlencoded';
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
 
 export const login = axios.create({
-  baseURL:
-    'http://vemser-dbc.dbccompany.com.br:39000/deyvidlucas-dev/deploy_searchorganic',
+  baseURL: "https://search-organic.up.railway.app/",
 });
