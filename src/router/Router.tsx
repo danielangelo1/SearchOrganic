@@ -1,14 +1,15 @@
-import { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 
-import Home from '../pages/home/Home';
-import ProtectedRoute from '../pages/ProtectedRoute';
+import Home from "../pages/home/Home";
+import ProtectedRoute from "../pages/ProtectedRoute";
 
-const LazyStore = lazy(() => import('../pages/store/Store'));
-const LazyNews = lazy(() => import('../pages/news/News'));
-const LazyAbout = lazy(() => import('../pages/about/About'));
-const LazyLogin = lazy(() => import('../pages/login/Login'));
-const LazyRegister = lazy(() => import('../pages/register/Register'));
+const LazyStore = lazy(() => import("../pages/store/Store"));
+const LazyNews = lazy(() => import("../pages/news/News"));
+const LazyAbout = lazy(() => import("../pages/about/About"));
+const LazyLogin = lazy(() => import("../pages/login/Login"));
+const LazyRegister = lazy(() => import("../pages/register/Register"));
+const LazyCart = lazy(() => import("../pages/cart/Cart"));
 
 const Router = () => {
   return (
@@ -54,6 +55,14 @@ const Router = () => {
         element={
           <Suspense>
             <LazyRegister />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <Suspense>
+            <LazyCart />
           </Suspense>
         }
       />
