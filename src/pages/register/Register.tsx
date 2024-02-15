@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../axios/axios";
 
 interface userRegistrationResponse {
-  id: string | number;
-  error?: string;
+  nome: string;
 }
 
 interface UserFormData {
@@ -31,7 +30,6 @@ const schema = yup.object().shape({
     .required("CPF é obrigatório")
     .max(11, "CPF deve seguir o formato 12312312311")
     .min(11, "CPF deve seguir o formato 12312312311"),
-  // .test("is-cpf", "CPF inválido", validateCPF),
   email: yup.string().required("Email é obrigatório").email("Email inválido"),
   login: yup.string().required("Login é obrigatório"),
   senha: yup
@@ -67,8 +65,7 @@ const Register = () => {
           },
         },
       );
-      alert(`Usuário cadastrado`);
-
+      alert(`Usuário ${response.data.nome} cadastrado`);
       navigate("/login");
     } catch (error) {
       console.error("User não cadastrado");
