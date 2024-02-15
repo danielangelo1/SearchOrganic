@@ -41,12 +41,16 @@ const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
+<<<<<<< HEAD
       const response = await login.post('/auth/login', data, {
         headers: {
           'Content-Type': 'application/json',
           Accept: '*/*',
         },
       });
+=======
+      const response = await login.post('/auth/login', data);
+>>>>>>> 1e254ec69551bdd92519b96609ec328f0d5f6c43
       console.log(response.data);
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
