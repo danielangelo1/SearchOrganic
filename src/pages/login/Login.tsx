@@ -43,12 +43,8 @@ const Login = () => {
     try {
       const response = await api.post('/auth/login', data, {
 
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: '*/*',
-        },
-      });
 
+      
       if (response) {
         alert(`${getValues().login} logado`);
         localStorage.setItem('isLogged', 'true');
@@ -60,10 +56,10 @@ const Login = () => {
         );
         navigate('/about');
       } else {
-        alert('Não foi possível realizar o login');
+        alert("Não foi possível realizar o login");
       }
     } catch (error) {
-      console.error('Falha no login', error);
+      console.error("Falha no login", error);
     }
   };
 
