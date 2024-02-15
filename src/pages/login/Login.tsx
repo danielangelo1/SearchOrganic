@@ -42,11 +42,13 @@ const Login = () => {
   const onSubmit = async (data: FormData) => {
     try {
       const response = await api.post('/auth/login', data, {
+
         headers: {
           'Content-Type': 'application/json',
           Accept: '*/*',
         },
       });
+
       if (response) {
         alert(`${getValues().login} logado`);
         localStorage.setItem('isLogged', 'true');
