@@ -30,6 +30,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Axios
 - Swiper
 - Yup
+- React Hook Form
+- Redux Toolkit
 
 ## ⚙️ Instalação do projeto
 
@@ -48,6 +50,7 @@ npm i
 npm start
 ```
 
+<<<<<<< Updated upstream
 3. Para utilizar a opção de cadastro e login, instale o JSON Server com os seguinte comando:
 
 ```
@@ -88,6 +91,8 @@ json-server --watch db.json --port 3001
 
 - **GET** `/users?email={email}&password={password}`: Autentica um usuário.
 
+=======
+>>>>>>> Stashed changes
 ## Validações
 
 ### Formulário de Registro
@@ -102,23 +107,15 @@ json-server --watch db.json --port 3001
 - Email: Obrigatório, formato válido.
 - Senha: Obrigatória.
 
-## Uso
-
-### Registro
-
-Preencha o formulário e submeta. Um `POST` será enviado para `/users`.
-
-### Login
-
-Insira email e senha. Um `GET` será feito para `/users`.
-
 ## Notas
 
-- JSON Server é apenas para desenvolvimento;
-- Validações no frontend complementam, mas não substituem medidas de segurança no backend;
+- A aplicação está utilizando a API desenvolvida pelo back-end para cadastro e login do usuário;
+- As validações no frontend complementam, mas não substituem medidas de segurança no backend;
 - Existem rotas protegidas, que concedem acesso apenas a pessoas logadas/autorizadas;
 - A aplicação conta com o carregamento "preguiçoso/tardio" (lazy loading) para otimização da performance;
 - Utilização do tabindex para aprimoramento de acessibilidade da aplicação para pessoas com deficiência (PCD).
+- A aplicação conta com um estado global, sendo utilizado um reducer no login, para gerenciamento do usuário e token recebido da API.
+- A próxima etapa é realizar o gerenciamento do estado do carrinho da aplicação utilizando o estado global implantado através do Redux.
 
 ## 💻 Sobre o Projeto
 
@@ -128,4 +125,4 @@ O Search Organic tem como objetivo conectar pequenos produtores com clientes que
 
 - Próximos passos:
 
-Alinhamento com a equipe do back-end para criação de endpoints para recuperar senha, cadastro de solicitações, configuração de servidor para envio de e-mails.
+Desenvolvimento do carrinho de comprar, página de detalhes do produto e perfil do usário.
