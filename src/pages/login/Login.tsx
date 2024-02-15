@@ -47,11 +47,15 @@ const Login = () => {
           Accept: '*/*',
         },
       });
-
-      if (response.data && response.data.name) {
-        alert(`${response.data.name} logado`);
+      if (response) {
+        alert(`${getValues().login} logado`);
         localStorage.setItem('isLogged', 'true');
-        dispatch(setLogin(getValues('login')));
+        dispatch(
+          setLogin({
+            login: getValues('login'),
+            token: response.data.token,
+          })
+        );
         navigate('/about');
       } else {
         alert('Não foi possível realizar o login');
