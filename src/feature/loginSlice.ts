@@ -1,16 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface LoginState {
+  login: string;
+  token: string;
+}
+
 const initialState = {
   login: '',
-  senha: '',
+  token: '',
 };
 
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    setLogin: (state, action: PayloadAction<string>) => {
-      state.login = action.payload;
+    setLogin: (state, action: PayloadAction<LoginState>) => {
+      state.login = action.payload.login;
+      state.token = action.payload.token;
     },
   },
 });

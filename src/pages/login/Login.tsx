@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch } from '../../feature/hooks/hooks';
 import { setLogin } from '../../feature/loginSlice';
-import { login } from '../../axios/axios';
+import { api } from '../../axios/axios';
 
 interface FormData {
   login: string;
@@ -41,18 +41,20 @@ const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await login.post("auth/login", data, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "*/*",
-        },
-      });
-      console.log(response.data);
-      if (response.data.length > 0) {
-        alert(`${response.data[0].name} logado`);
-        localStorage.setItem("isLogged", "true");
-        dispatch(setLogin(getValues("login")));
-        navigate("/about");
+      const response = await api.post('/auth/login', data, {
+
+
+      
+      if (response) {
+        alert(`${getValues().login} logado`);
+        localStorage.setItem('isLogged', 'true');
+        dispatch(
+          setLogin({
+            login: getValues('login'),
+            token: response.data.token,
+          })
+        );
+        navigate('/about');
       } else {
         alert("Não foi possível realizar o login");
       }
@@ -69,7 +71,7 @@ const Login = () => {
         <h1>Login</h1>
         <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.formLabelInput}>
-            <label htmlFor="email">
+            <label htmlFor="login">
               Digite seu login <span>*</span>
             </label>
             <input
@@ -89,7 +91,7 @@ const Login = () => {
           </div>
 
           <div className={style.formLabelInput}>
-            <label htmlFor="password">
+            <label htmlFor="senha">
               Senha <span>*</span>
             </label>
             <input
