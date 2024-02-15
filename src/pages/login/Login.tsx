@@ -41,27 +41,23 @@ const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-<<<<<<< HEAD
-      const response = await login.post('/auth/login', data, {
+      const response = await login.post("auth/login", data, {
         headers: {
-          'Content-Type': 'application/json',
-          Accept: '*/*',
+          "Content-Type": "application/json",
+          Accept: "*/*",
         },
       });
-=======
-      const response = await login.post('/auth/login', data);
->>>>>>> 1e254ec69551bdd92519b96609ec328f0d5f6c43
       console.log(response.data);
       if (response.data.length > 0) {
         alert(`${response.data[0].name} logado`);
-        localStorage.setItem('isLogged', 'true');
-        dispatch(setLogin(getValues('login')));
-        navigate('/about');
+        localStorage.setItem("isLogged", "true");
+        dispatch(setLogin(getValues("login")));
+        navigate("/about");
       } else {
-        alert('Não foi possível realizar o login');
+        alert("Não foi possível realizar o login");
       }
     } catch (error) {
-      console.error('Falha no login', error);
+      console.error("Falha no login", error);
     }
   };
 
