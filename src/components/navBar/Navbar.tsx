@@ -1,6 +1,6 @@
-import React from 'react';
-import NavBarItem from '../navBarItem/NavBarItem';
-import './Navbar.module.scss';
+import React from "react";
+import NavBarItem from "../navBarItem/NavBarItem";
+import "./Navbar.module.scss";
 
 const Navbar = () => {
   return (
@@ -17,7 +17,10 @@ const Navbar = () => {
       <NavBarItem to="/about" tabindex={5}>
         Sobre nós
       </NavBarItem>
-      <NavBarItem to="/login" tabindex={6}>
+      <NavBarItem to="/cart" tabindex={6}>
+        Carrinho
+      </NavBarItem>
+      <NavBarItem to="/login" tabindex={7}>
         Login
       </NavBarItem>
     </nav>
