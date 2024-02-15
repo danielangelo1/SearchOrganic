@@ -16,8 +16,10 @@ const CardProduct = ({ imgsrc, name, price, tabindex }: CardProductProps) => {
   const dispatch = useDispatch();
 
   const handleAddCart = () => {
-    dispatch(addToCart({ product: { imgsrc, name, price } }));
+    dispatch(addToCart({ products: [{ imgsrc, name, price }] }));
+    alert("Produto adicionado ao carrinho");
   };
+
   return (
     <>
       <div className={style.card_product} tabIndex={tabindex}>
