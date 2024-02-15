@@ -1,46 +1,41 @@
-import React from 'react';
-import style from './Register.module.scss';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import axios, { AxiosResponse } from 'axios';
-import { Link } from 'react-router-dom';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
+import style from "./Register.module.scss";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { AxiosResponse } from "axios";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../axios/axios";
 
 interface userRegistrationResponse {
-  id: string | number;
-  error?: string;
+  nome: string;
 }
 
 interface UserFormData {
-  name: string;
-  birthDate: Date;
-  telephone: string;
+  nome: string;
+  sobrenome: string;
+  dataNascimento: Date;
   cpf: string;
   email: string;
-  password: string;
-  passConfirmation: string;
+  login: string;
+  senha: string;
 }
 
 const schema = yup.object().shape({
-  name: yup.string().required('Nome completo é obrigatório'),
-  birthDate: yup.date().required('Data de nascimento é obrigatória'),
-  telephone: yup.string().required('Telefone é obrigatório'),
+  nome: yup.string().required("Nome completo é obrigatório"),
+  sobrenome: yup.string().required("Sobrenome é obrigatório"),
+  dataNascimento: yup.date().required("Data de nascimento é obrigatória"),
   cpf: yup
     .string()
-    .required('CPF é obrigatório')
-    .max(14, 'CPF deve seguir o formato 123.123.123-11')
-    .min(14, 'CPF deve seguir o formato 123.123.123-11'),
-  // .test("is-cpf", "CPF inválido", validateCPF),
-  email: yup.string().required('Email é obrigatório').email('Email inválido'),
-  password: yup
+    .required("CPF é obrigatório")
+    .max(11, "CPF deve seguir o formato 12312312311")
+    .min(11, "CPF deve seguir o formato 12312312311"),
+  email: yup.string().required("Email é obrigatório").email("Email inválido"),
+  login: yup.string().required("Login é obrigatório"),
+  senha: yup
     .string()
-    .required('Senha é obrigatória')
-    .min(8, 'A senha deve ter pelo menos 8 caracteres'),
-  passConfirmation: yup
-    .string()
-    .oneOf([yup.ref('password'), undefined], 'As senhas devem coincidir')
-    .required('Confirmação de senha é obrigatória'),
+    .required("Senha é obrigatória")
+    .min(8, "A senha deve ter pelo menos 8 caracteres"),
 });
 
 const Register = () => {
@@ -51,18 +46,29 @@ const Register = () => {
     formState: { errors, touchedFields },
   } = useForm<UserFormData>({
     resolver: yupResolver(schema),
-    mode: 'onChange',
+    mode: "onChange",
   });
 
   const onSubmit: SubmitHandler<UserFormData> = async (data) => {
     try {
-      const response: AxiosResponse<userRegistrationResponse> =
-        await axios.post('http://localhost:3001/users', data);
-      alert(`Usuário registrado com o ID:${response.data.id}`);
-
-      navigate('/login');
+      const response: AxiosResponse<userRegistrationResponse> = await api.post(
+        "/auth/cadastrar",
+        {
+          ...data,
+          dataNascimento: data.dataNascimento.toISOString().split("T")[0],
+          tipoAtivo: "S",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+        },
+      );
+      alert(`Usuário ${response.data.nome} cadastrado`);
+      navigate("/login");
     } catch (error) {
-      console.error('User não cadastrado');
+      console.error("User não cadastrado");
     }
   };
 
@@ -75,61 +81,61 @@ const Register = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
-            <label htmlFor="name">
+            <label htmlFor="nome">
               Nome Completo <span>*</span>
             </label>
             <input
               type="text"
-              id="name"
+              id="nome"
               maxLength={50}
-              {...register('name', { required: true })}
+              {...register("nome", { required: true })}
               className={`${
-                touchedFields.name && !errors.name ? style.inputValid : ''
-              } ${errors.name ? style.inputError : ''}`}
+                touchedFields.nome && !errors.nome ? style.inputValid : ""
+              } ${errors.nome ? style.inputError : ""}`}
               tabIndex={1}
             />
-            {errors.name && (
-              <p className={style.error_message}>{errors.name.message}</p>
+            {errors.nome && (
+              <p className={style.error_message}>{errors.nome.message}</p>
             )}
 
-            <label htmlFor="birthDate">
+            <label htmlFor="sobrenome">
+              Sobrenome <span>*</span>
+            </label>
+            <input
+              type="text"
+              id="sobrenome"
+              maxLength={50}
+              {...register("sobrenome", { required: true })}
+              className={`${
+                touchedFields.sobrenome && !errors.sobrenome
+                  ? style.inputValid
+                  : ""
+              } ${errors.sobrenome ? style.inputError : ""}`}
+              tabIndex={3}
+            />
+            {errors.sobrenome && (
+              <p className={style.error_message}>{errors.sobrenome.message}</p>
+            )}
+
+            <label htmlFor="dataNascimento">
               Data de nascimento <span>*</span>
             </label>
             <input
               type="date"
-              id="birthDate"
-              {...register('birthDate', { required: true })}
+              id="dataNascimento"
+              {...register("dataNascimento", { required: true })}
               className={`${
-                touchedFields.birthDate && !errors.birthDate
+                touchedFields.dataNascimento && !errors.dataNascimento
                   ? style.inputValid
-                  : ''
-              } ${errors.birthDate ? style.inputError : ''}`}
+                  : ""
+              } ${errors.dataNascimento ? style.inputError : ""}`}
               tabIndex={2}
             />
-            {errors.birthDate && (
-              <p className={style.error_message}>{errors.birthDate.message}</p>
+            {errors.dataNascimento && (
+              <p className={style.error_message}>
+                {errors.dataNascimento.message}
+              </p>
             )}
-
-            <label htmlFor="telephone">
-              Telefone celular <span>*</span>
-            </label>
-            <input
-              type="text"
-              id="telephone"
-              maxLength={13}
-              placeholder="99 99876-2342"
-              {...register('telephone', { required: true })}
-              className={`${
-                touchedFields.telephone && !errors.telephone
-                  ? style.inputValid
-                  : ''
-              } ${errors.telephone ? style.inputError : ''}`}
-              tabIndex={3}
-            />
-            {errors.telephone && (
-              <p className={style.error_message}>{errors.telephone.message}</p>
-            )}
-            <div className={style.required}>99 99999-9999</div>
 
             <label htmlFor="cpf">
               CPF <span>*</span>
@@ -139,9 +145,9 @@ const Register = () => {
               id="cpf"
               maxLength={14}
               className={`${
-                touchedFields.cpf && !errors.cpf ? style.inputValid : ''
-              } ${errors.cpf ? style.inputError : ''}`}
-              {...register('cpf', { required: true })}
+                touchedFields.cpf && !errors.cpf ? style.inputValid : ""
+              } ${errors.cpf ? style.inputError : ""}`}
+              {...register("cpf", { required: true })}
               tabIndex={4}
             />
             {errors.cpf && (
@@ -157,57 +163,53 @@ const Register = () => {
               type="email"
               id="email"
               maxLength={50}
-              {...register('email', { required: true })}
+              {...register("email", { required: true })}
               className={`${
-                touchedFields.email && !errors.email ? style.inputValid : ''
-              } ${errors.email ? style.inputError : ''}`}
+                touchedFields.email && !errors.email ? style.inputValid : ""
+              } ${errors.email ? style.inputError : ""}`}
               tabIndex={5}
             />
             {errors.email && (
               <p className={style.error_message}>{errors.email.message}</p>
             )}
 
-            <label htmlFor="password">
+            <label htmlFor="login">
+              Crie seu login <span>*</span>
+            </label>
+            <input
+              type="text"
+              id="login"
+              maxLength={50}
+              {...register("login", { required: true })}
+              className={`${
+                touchedFields.login && !errors.login ? style.inputValid : ""
+              } ${errors.login ? style.inputError : ""}`}
+              tabIndex={6}
+            />
+            {errors.login && (
+              <p className={style.error_message}>{errors.login.message}</p>
+            )}
+
+            <label htmlFor="senha">
               Crie sua senha <span>*</span>
             </label>
             <input
               type="password"
-              id="password"
+              id="senha"
               maxLength={50}
-              {...register('password', { required: true })}
+              {...register("senha", { required: true })}
               className={`${
-                touchedFields.password && !errors.password
-                  ? style.inputValid
-                  : ''
-              } ${errors.password ? style.inputError : ''}`}
+                touchedFields.senha && !errors.senha ? style.inputValid : ""
+              } ${errors.senha ? style.inputError : ""}`}
               tabIndex={6}
             />
-            {errors.password && (
-              <p className={style.error_message}>{errors.password.message}</p>
+            {errors.senha && (
+              <p className={style.error_message}>{errors.senha.message}</p>
             )}
 
             <div className={style.required}>Ao menos 8 caracteres</div>
-            <label htmlFor="passConfirmation">
-              Confirme sua senha <span>*</span>
-            </label>
-            <input
-              type="password"
-              id="passConfirmation"
-              maxLength={50}
-              {...register('passConfirmation', { required: true })}
-              className={`${
-                touchedFields.passConfirmation && !errors.passConfirmation
-                  ? style.inputValid
-                  : ''
-              } ${errors.passConfirmation ? style.inputError : ''}`}
-              tabIndex={7}
-            />
-            {errors.passConfirmation && (
-              <p className={style.error_message}>
-                {errors.passConfirmation.message}
-              </p>
-            )}
           </div>
+
           <div className={style.options}>
             <div>
               <input type="checkbox" id="newsletter" tabIndex={8} />
