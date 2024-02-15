@@ -1,13 +1,13 @@
-import React from 'react';
-import style from './Login.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import { FacebookLogo, GoogleLogo } from '@phosphor-icons/react';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useAppDispatch } from '../../feature/hooks/hooks';
-import { setLogin } from '../../feature/loginSlice';
-import { api } from '../../axios/axios';
+import React from "react";
+import style from "./Login.module.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useAppDispatch } from "../../feature/hooks/hooks";
+import { setLogin } from "../../feature/loginSlice";
+import { api } from "../../axios/axios";
 
 interface FormData {
   login: string;
@@ -15,13 +15,13 @@ interface FormData {
 }
 
 const schema = yup.object().shape({
-  login: yup.string().required('O campo login é obrigatório.'),
+  login: yup.string().required("O campo login é obrigatório."),
   senha: yup
     .string()
-    .required('O campo senha é obrigatória')
+    .required("O campo senha é obrigatória")
     .min(
       8,
-      'Digite sua senha com no mínimo 8 caracteres para realizar o login'
+      "Digite sua senha com no mínimo 8 caracteres para realizar o login",
     ),
 });
 
@@ -36,25 +36,23 @@ const Login = () => {
     formState: { errors, touchedFields },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
-    mode: 'onChange',
+    mode: "onChange",
   });
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await api.post('/auth/login', data, {
+      const response = await api.post("/auth/login", data);
 
-
-      
       if (response) {
         alert(`${getValues().login} logado`);
-        localStorage.setItem('isLogged', 'true');
+        localStorage.setItem("isLogged", "true");
         dispatch(
           setLogin({
-            login: getValues('login'),
+            login: getValues("login"),
             token: response.data.token,
-          })
+          }),
         );
-        navigate('/about');
+        navigate("/about");
       } else {
         alert("Não foi possível realizar o login");
       }
@@ -63,7 +61,7 @@ const Login = () => {
     }
   };
 
-  localStorage.setItem('isLogged', 'false');
+  localStorage.setItem("isLogged", "false");
 
   return (
     <div>
@@ -79,10 +77,10 @@ const Login = () => {
               id="login"
               maxLength={50}
               min={1}
-              {...register('login', { required: true })}
+              {...register("login", { required: true })}
               className={`${
-                touchedFields.login && !errors.login ? style.inputValid : ''
-              } ${errors.login ? style.inputError : ''}`}
+                touchedFields.login && !errors.login ? style.inputValid : ""
+              } ${errors.login ? style.inputError : ""}`}
               tabIndex={1}
             />
             {errors.login && (
@@ -98,10 +96,10 @@ const Login = () => {
               type="password"
               id="senha"
               min={1}
-              {...register('senha', { required: true })}
+              {...register("senha", { required: true })}
               className={`${
-                touchedFields.senha && !errors.senha ? style.inputValid : ''
-              } ${errors.senha ? style.inputError : ''}`}
+                touchedFields.senha && !errors.senha ? style.inputValid : ""
+              } ${errors.senha ? style.inputError : ""}`}
               tabIndex={2}
             />
             {errors.senha && (
@@ -121,8 +119,8 @@ const Login = () => {
 
         <div className={style.sectionRegister}>
           <p>
-            Novo no Search Organic?{' '}
-            <Link to={'/register'} tabIndex={5}>
+            Novo no Search Organic?{" "}
+            <Link to={"/register"} tabIndex={5}>
               CADASTRE-SE
             </Link>
           </p>
